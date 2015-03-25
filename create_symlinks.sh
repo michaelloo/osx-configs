@@ -9,7 +9,7 @@
 # Constant Variables 
 ################################################################################
 
-IGNORE_LIST=(".DS_Store" "." "..")
+IGNORE_LIST=(".DS_Store" "." ".." ".gitignore" ".git")
 PWD=`pwd`
 
 ################################################################################
@@ -36,8 +36,16 @@ for file in .*; do
     continue
   fi
 
-  # Create a symlink for the remaining files
-  echo Creating symlink for "${file}"
-  ln -s "${PWD}/${file}" "${HOME}/${file}"
-
+  if [[ -L "${HOME}/${file}" ]]; then
+    # Ignore if the file exists and is already a symlink 
+    if [[ "${PWD}/${file}" = `readlink ${HOME}/${file}` ]]; then
+      echo "Symlink already exists for ${file}"
+    else
+      echo "Symlink already exists but have a different link."
+    fi
+  else
+    # Create a symlink for the remaining files
+    echo Creating symlink for "${file}"
+    ln -s "${PWD}/${file}" "${HOME}/${file}"
+  fi
 done

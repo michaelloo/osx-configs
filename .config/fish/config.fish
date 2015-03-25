@@ -63,7 +63,7 @@ function ops --description 'Open ops folder'
    cd ~/Documents/DevOps
 end
 
-function goanz --description 'Open anz dev folder'
+function anz --description 'Open anz dev folder'
    cd ~/Documents/anz-dev
 end
 

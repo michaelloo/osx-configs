@@ -55,7 +55,7 @@ function ogb --description 'Open Gitbox in current folder'
    open . -a Gitbox
 end
 
-function godev --description 'Open dev folder'
+function dev --description 'Open dev folder'
    cd ~/Documents/dev
 end
 

@@ -10,6 +10,7 @@
 ################################################################################
 
 IGNORE_LIST=(".DS_Store" "." ".." ".gitignore" ".git")
+COPY_LIST=(".vim")
 PWD=`pwd`
 
 ################################################################################
@@ -33,6 +34,20 @@ for file in .*; do
 
   if [[ "${ignore_file_flag}" = true ]]; then
     echo Ignoring "${file}"
+    continue
+  fi
+
+  copy_file_flag=false
+  for copy_file in "${COPY_LIST[@]}"; do
+    if [[ "${copy_file}" = "${file}" ]]; then
+      copy_file_flag=true
+      break
+    fi
+  done
+
+  if [[ "${copy_file_flag}" = true ]]; then
+    echo Copying "${file}"
+    cp -r "${PWD}/${file}" "${HOME}/"
     continue
   fi
 

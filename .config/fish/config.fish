@@ -134,3 +134,8 @@ end
 function pwd_generate --description 'Generate a random password of 8 characters'
   openssl rand -base64 6
 end
+
+function r --description 'Run anz routes'
+  sudo anzroutes
+end
+

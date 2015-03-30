@@ -58,6 +58,8 @@ for file in .*; do
     else
       echo "Symlink already exists but have a different link."
     fi
+  elif [[ -f "${HOME}/${file}" ]]; then
+      echo "An existing file was found at ${HOME}/${file}"
   else
     # Create a symlink for the remaining files
     echo Creating symlink for "${file}"

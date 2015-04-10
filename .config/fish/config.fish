@@ -84,11 +84,11 @@ function sc --description 'Open ssh connection to the Jenkins machines as contin
 end
 
 function sgo --description 'Open ssh connection to the Jenkins machines as go'
-   ssh gomoney@$argv[1].local -i ~/.ssh/anz_id_rsa
+   ssh gomoney@$argv[1].local
 end
 
 function sgr --description 'Open ssh connection to the Jenkins machines as grow'
-   ssh growmoney@$argv[1].local -i ~/.ssh/anz_id_rsa
+   ssh growmoney@$argv[1].local
 end
 
 function sub --description 'Open file with sublime'
@@ -136,6 +136,6 @@ function pwd_generate --description 'Generate a random password of 8 characters'
 end
 
 function r --description 'Run anz routes'
-  sudo anzroutes
+  sudo anzroutes $argv
 end
 

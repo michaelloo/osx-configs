@@ -22,7 +22,7 @@
 	l = log --oneline
 	pushom = push origin master
 	pullom = pull origin master
-	su = submodule update
+	su = submodule update --init
 	si = submodule init
 	owner = !sh -c \"git blame --line-porcelain \\\"$@\\\" | sed -n \\\"s/^author //p\\\" | sort | uniq -c | sort -rn\"
 	cnm = commit --no-verify -m

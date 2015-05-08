@@ -1,4 +1,4 @@
-set -gx PATH /usr/local/bin/ $PATH
+set -gx PATH /usr/local/bin $PATH
 
 function fish_prompt --description 'Write out the prompt'
     # Just calculate these once, to save a few cycles when displaying the prompt

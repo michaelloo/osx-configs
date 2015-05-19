@@ -135,7 +135,6 @@ function pwd_generate --description 'Generate a random password of 8 characters'
   openssl rand -base64 6
 end
 
-function r --description 'Run anz routes'
-  sudo anzroutes $argv
+function bl --description 'Run bundle install local'
+  bundle install --local --path vendor/cache
 end
-

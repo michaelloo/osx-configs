@@ -21,7 +21,7 @@ set ignorecase smartcase
 " " proper vim mode
 set nocompatible
 " " show long lines as they are
-set nowrap
+" set nowrap
 " " character to mark lines that exceed 80 characters
 set listchars+=extends:@
 " " tabstops set to 4 space
@@ -76,3 +76,6 @@ set fileencodings=ucs-bom,utf-8,latin1
 
 " Enable Mouse usage (all modes)
 " set mouse=a
+
+" Use shell as default shell
+set shell=/bin/bash

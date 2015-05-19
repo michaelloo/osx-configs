@@ -169,7 +169,16 @@ function of()
   open .
 }
 
-set -o vi
+function git_up_https()
+{
+  GIT_REMOTE_URL=`git config --get remote.origin.url`
+  HTTP_REMOTE_URL=`echo $GIT_REMOTE_URL | sed "s/git\@/https:\/\/michael_loo@/g" | sed "s/:outware/\/outware/g"`
+
+  git fetch $HTTP_REMOTE_URL
+  git pull $HTTP_REMOTE_URL
+}
+
+#set -o vi
 
 export GIT_BRANCH=development
 export PATH=/usr/local/bin:$PATH

@@ -2,3 +2,6 @@
 *.swp
 **/xcuserdata
 */*.xcodeproj/project.xcworkspace/xcshareddata/*.xccheckout
+vendor/bundle
+vendor/cache/ruby/
+.bundle/

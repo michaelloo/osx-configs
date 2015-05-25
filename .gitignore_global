@@ -5,3 +5,4 @@
 vendor/bundle
 vendor/cache/ruby/
 .bundle/
+DerivedData

@@ -28,6 +28,8 @@
 	cnm = commit --no-verify -m
 	a = add
 	cp = cherry-pick
+  omclone = !sh -c \"$OMSCRIPTS/Cache/clone_from_cache.sh -p $@\"
+  mt = mergetool
 [color]
 	diff = true
 [push]

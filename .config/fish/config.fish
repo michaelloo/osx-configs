@@ -40,7 +40,7 @@ function fish_prompt --description 'Write out the prompt'
 end
 
 function ow --description 'Open workspace in current folder'
-   open *.xcworkspace -a /Applications/Xcode.app
+   bash -c "[[ `ls *.xcworkspace 2>/dev/null` ]] && open *.xcworkspace -a /Applications/Xcode.app || open *.xcodeproj -a /Applications/Xcode.app"
 end
 
 function of --description 'Open current folder'
@@ -137,4 +137,12 @@ end
 
 function bl --description 'Run bundle install local'
   bundle install --local --path vendor/cache
+end
+
+function be --description 'Run bundle exec'
+  bundle exec $argv
+end
+
+function brake --description 'Run bundle exec rake'
+  bundle exec rake $argv
 end

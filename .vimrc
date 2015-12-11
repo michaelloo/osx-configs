@@ -79,3 +79,9 @@ set fileencodings=ucs-bom,utf-8,latin1
 
 " Use shell as default shell
 set shell=/bin/bash
+
+:highlight ExtraWhitespace ctermbg=red guibg=red
+
+" Show trailing whitespace:
+:match ExtraWhitespace /\s\+$/
+

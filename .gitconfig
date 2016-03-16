@@ -37,3 +37,5 @@
 	default = current
 [merge]
 	tool = opendiff
+[credential]
+	helper = osxkeychain

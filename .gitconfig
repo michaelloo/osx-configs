@@ -30,6 +30,7 @@
 	cp = cherry-pick
   omclone = !sh -c \"$OMSCRIPTS/Cache/clone_from_cache.sh -p $@\"
   mt = mergetool
+  pushup = push --set-upstream
 [color]
 	diff = true
 [push]

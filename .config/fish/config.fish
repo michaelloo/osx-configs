@@ -39,7 +39,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 end
 
-function ow --description 'Open xcworkspace or xcodeproj in current folder'
+function ow --description 'Open workspace in current folder'
    bash -c "[[ `ls *.xcworkspace 2>/dev/null` ]] && open *.xcworkspace -a /Applications/Xcode.app || open *.xcodeproj -a /Applications/Xcode.app"
 end
 
@@ -55,12 +55,40 @@ function ogb --description 'Open Gitbox in current folder'
    open . -a Gitbox
 end
 
-function dev --description 'Change directory to the dev folder'
+function dev --description 'Open dev folder'
    cd ~/Documents/dev
 end
 
-function ops --description 'Change directory to the DevOps folder'
+function ops --description 'Open ops folder'
    cd ~/Documents/DevOps
+end
+
+function anz --description 'Open anz dev folder'
+   cd ~/Documents/anz-dev
+end
+
+function pod_push_anz --description 'Update podspec on ANZ-Repo with a pod repo push'
+   pod repo push master *.podspec --verbose
+end
+
+function ssh_ec2 --description 'Open ssh connection to the EC2 instance which backs up the bitbucket repos'
+   ssh -i ~/Documents/dev/omscripts/Backup/.ssh/repo-backup.pem $argv
+end
+
+function ssh_jira --description 'Open ssh connection to the EC2 instance which hosts jira'
+   ssh -i ~/.ssh/Atlassian.pem ec2-user@ec2-54-252-23-10.ap-southeast-2.compute.amazonaws.com
+end
+
+function sc --description 'Open ssh connection to the Jenkins machines as continuous'
+   ssh continuous@$argv[1].local
+end
+
+function sgo --description 'Open ssh connection to the Jenkins machines as go'
+   ssh gomoney@$argv[1].local
+end
+
+function sgr --description 'Open ssh connection to the Jenkins machines as grow'
+   ssh growmoney@$argv[1].local
 end
 
 function sub --description 'Open file with sublime'
@@ -83,6 +111,22 @@ function vncs1 --description 'Open vncviewer on jenkins slave 1'
   vncviewer jade.local:5917
 end
 
+function vncs2 --description 'Open vncviewer on jenkins slave 2'
+  vncviewer moss.local:5918
+end
+
+function vncs3 --description 'Open vncviewer on jenkins slave 3'
+  vncviewer moss.local:5919
+end
+
+function vncs4 --description 'Open vncviewer on jenkins slave 4'
+  vncviewer iceland.local:5920
+end
+
+function vncs5 --description 'Open vncviewer on jenkins slave 5'
+  vncviewer iceland.local:5921
+end
+
 function mount_omjenkins --description 'Mount OMJenkins to /Volumes/OMJenkins'
   mkdir /Volumes/OMJenkins; mount -t nfs berkeley.local:/volume1/OMJenkins /Volumes/OMJenkins
 end
@@ -102,3 +146,17 @@ end
 function brake --description 'Run bundle exec rake'
   bundle exec rake $argv
 end
+
+function start_defect_branch --description 'Start defect branch from `develop`'
+  git up; git co develop; git co -b defect/tuap-$argv[1]
+end
+
+function start_pr --description 'Start pr branch on given branch' 
+  bash -l -c "start_pr $argv[1]"
+  cd ~/Documents/dev/pull-request
+end
+
+function end_pr --description 'End pr branch'
+  bash -l -c "end_pr"
+end
+

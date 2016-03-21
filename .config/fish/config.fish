@@ -1,4 +1,6 @@
 set -gx PATH /usr/local/bin $PATH
+status --is-interactive; and . (rbenv init -|psub)
+rbenv shell 2.0.0-p645
 
 function fish_prompt --description 'Write out the prompt'
     # Just calculate these once, to save a few cycles when displaying the prompt

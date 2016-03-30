@@ -1,41 +1,43 @@
 [core]
-	quotepath = false
-	excludesfile = /Users/michaelloo/.gitignore_global
+  quotepath = false
+  excludesfile = /Users/michaelloo/.gitignore_global
 [user]
-	name = Michael Loo Chin Moy
-	email = michael.loo@outware.com.au
+  name = "Michael Loo"
+  email = michael.loo@outware.com.au
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 [alias]
-	s = status
-	c = commit
-	b = branch
-	co = checkout
-	r = rebase
-	d = diff
-	dc = diff --cached
-	wd = diff --word-diff
-	l = log --oneline
-	pushom = push origin master
-	pullom = pull origin master
-	su = submodule update --init
-	si = submodule init
-	owner = !sh -c \"git blame --line-porcelain \\\"$@\\\" | sed -n \\\"s/^author //p\\\" | sort | uniq -c | sort -rn\"
-	cnm = commit --no-verify -m
-	a = add
-	cp = cherry-pick
+  s = status
+  c = commit
+  b = branch
+  co = checkout
+  r = rebase
+  d = diff
+  dc = diff --cached
+  wd = diff --word-diff
+  l = log --oneline
+  pushom = push origin master
+  pullom = pull origin master
+  su = submodule update --init
+  si = submodule init
+  owner = !sh -c \"git blame --line-porcelain \\\"$@\\\" | sed -n \\\"s/^author //p\\\" | sort | uniq -c | sort -rn\"
+  cnm = commit --no-verify -m
+  a = add
+  cp = cherry-pick
   omclone = !sh -c \"$OMSCRIPTS/Cache/clone_from_cache.sh -p $@\"
   mt = mergetool
   pushup = push --set-upstream
 [color]
-	diff = true
+  diff = true
 [push]
-	default = current
+  default = current
 [merge]
-	tool = opendiff
+  tool = opendiff
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
+[url "https://github.com/card-io/card.io-dmz"]
+  insteadOf = git@github.com:card-io/card.io-dmz

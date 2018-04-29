@@ -31,7 +31,7 @@
   omclone = !sh -c \"$OMSCRIPTS/Cache/clone_from_cache.sh -p $@\"
   mt = mergetool
   pushup = push --set-upstream
-  bc = !sh -c "/Users/michaelloo/Documents/dev/mac_osx_settings/git_branch_clean_up.sh"
+  bc = !sh -c "$HOME/Documents/dev/mac-osx-settings/git_branch_clean_up.sh"
 [color]
   diff = true
 [push]

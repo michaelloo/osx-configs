@@ -2,6 +2,7 @@ set PATH /usr/local/bin $PATH
 set PATH $HOME/.rbenv/shims $PATH
 set -x PATH $HOME/.fastlane/bin $PATH
 rbenv rehash >/dev/null ^&1
+status --is-interactive; and source (rbenv init -|psub)
 
 function fish_prompt --description 'Write out the prompt'
     # Just calculate these once, to save a few cycles when displaying the prompt
@@ -146,20 +147,11 @@ function be --description 'Run bundle exec'
   bundle exec $argv
 end
 
+function fast_dev --description "Run fastlane ci_dev with swift build optimised"
+  export SCAN_XCARGS="SWIFT_WHOLE_MODULE_OPTIMIZATION=YES"; be fastlane ci_dev
+end
+
 function brake --description 'Run bundle exec rake'
   bundle exec rake $argv
-end
-
-function start_defect_branch --description 'Start defect branch from `develop`'
-  git up; git co develop; git co -b defect/tuap-$argv[1]
-end
-
-function start_pr --description 'Start pr branch on given branch' 
-  bash -l -c "start_pr $argv[1]"
-  cd ~/Documents/dev/pull-request
-end
-
-function end_pr --description 'End pr branch'
-  bash -l -c "end_pr"
 end
 

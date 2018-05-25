@@ -1,15 +1,15 @@
 [core]
   quotepath = false
-  excludesfile = /Users/michaelloo/.gitignore_global
+	excludesfile = /Users/u203443/.gitignore_global
 [user]
-  name = "Michael Loo"
-  email = michael.loo@outware.com.au
+	name = Michael Loo
+	email = michael.loo@outware.com.au
 [difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 [mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 [alias]
   s = status
   c = commit
@@ -28,10 +28,11 @@
   cnm = commit --no-verify -m
   a = add
   cp = cherry-pick
-  omclone = !sh -c \"$OMSCRIPTS/Cache/clone_from_cache.sh -p $@\"
   mt = mergetool
   pushup = push --set-upstream
-  bc = !sh -c "$HOME/Documents/dev/mac-osx-settings/git_branch_clean_up.sh"
+  bc = !sh -c \"git branch --merged | grep -Ev \\\"(develop|master)\\\" | xargs -I branch git b -d branch\"
+  rbc = !sh -c \"git branch -r --merged | grep -Ev \\\"(develop|master|release)\\\" | sed \\\"s/origin\\///g\\\" | xargs -I branch git push -d origin branch\"
+  bro = !sh -c \"${HOME}/Documents/dev/mac-osx-settings/bro.sh $1 $2\"
 [color]
   diff = true
 [push]
@@ -42,3 +43,5 @@
   helper = osxkeychain
 [url "https://github.com/card-io/card.io-dmz"]
   insteadOf = git@github.com:card-io/card.io-dmz
+[commit]
+	template = /Users/u203443/.stCommitMsg

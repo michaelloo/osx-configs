@@ -1,8 +1,11 @@
 set PATH /usr/local/bin $PATH
 set PATH $HOME/.rbenv/shims $PATH
+set PATH $HOME/Library/Python/2.7/bin $PATH
 set -x PATH $HOME/.fastlane/bin $PATH
 rbenv rehash >/dev/null ^&1
 status --is-interactive; and source (rbenv init -|psub)
+
+thefuck --alias | source
 
 function fish_prompt --description 'Write out the prompt'
     # Just calculate these once, to save a few cycles when displaying the prompt
@@ -52,7 +55,7 @@ function of --description 'Open current folder'
 end
 
 function ost --description 'Open Source Tree in current folder'
-   open $argv[1] -a SourceTree
+   open . -a SourceTree
 end
 
 function ogb --description 'Open Gitbox in current folder'
@@ -140,7 +143,7 @@ function pwd_generate --description 'Generate a random password of 8 characters'
 end
 
 function bl --description 'Run bundle install local'
-  bundle install --local --path vendor/cache
+  bundle install --local --path vendor/bundle
 end
 
 function be --description 'Run bundle exec'
@@ -155,3 +158,12 @@ function brake --description 'Run bundle exec rake'
   bundle exec rake $argv
 end
 
+function fuck -d "Correct your previous console command"
+  set -l fucked_up_command $history[1]
+  env TF_SHELL=fish TF_ALIAS=fuck PYTHONIOENCODING=utf-8 thefuck $fucked_up_command | read -l unfucked_command
+  if [ "$unfucked_command" != "" ]
+    eval $unfucked_command
+    builtin history delete --exact --case-sensitive -- $fucked_up_command
+    builtin history merge ^ /dev/null
+  end
+end

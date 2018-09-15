@@ -1,6 +1,6 @@
 [core]
   quotepath = false
-	excludesfile = /Users/u203443/.gitignore_global
+	excludesfile = /Users/michaelloo/.gitignore_global
 [user]
 	name = Michael Loo
 	email = michael.loo@outware.com.au
@@ -33,6 +33,7 @@
   bc = !sh -c \"git branch --merged | grep -Ev \\\"(develop|master)\\\" | xargs -I branch git b -d branch\"
   rbc = !sh -c \"git branch -r --merged | grep -Ev \\\"(develop|master|release)\\\" | sed \\\"s/origin\\///g\\\" | xargs -I branch git push -d origin branch\"
   bro = !sh -c \"${HOME}/Documents/dev/mac-osx-settings/bro.sh $1 $2\"
+	poush = push
 [color]
   diff = true
 [push]
@@ -43,5 +44,3 @@
   helper = osxkeychain
 [url "https://github.com/card-io/card.io-dmz"]
   insteadOf = git@github.com:card-io/card.io-dmz
-[commit]
-	template = /Users/u203443/.stCommitMsg

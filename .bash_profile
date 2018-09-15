@@ -182,3 +182,5 @@ export GIT_BRANCH=development
 export PATH=/usr/local/bin:$PATH
 export VAGRANT_DEFAULT_PROVIDER='vmware_fusion'
 export VAGRANT_CWD=$HOME/mavericks-multi/
+
+eval $(thefuck --alias)

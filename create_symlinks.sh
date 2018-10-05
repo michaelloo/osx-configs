@@ -39,11 +39,6 @@ log () {
   echo -e "${SCRIPT}_${NOW}: $@"
 }
 
-# Check the number of arguments. If none are passed, print help and exit.
-if [ $NUMARGS -eq 0 ]; then
-  help_message
-fi
-
 # Parse command line flags
 while getopts oh flag; do
   case $flag in

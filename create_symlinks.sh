@@ -1,12 +1,12 @@
 #!/bin/bash
 #
 # Description:
-# This script will create a symlink for all the files and folders 
+# This script will create a symlink for all the files and folders
 # in this repository in the $HOME folder.
 ################################################################################
 
 ################################################################################
-# Constant Variables 
+# Constant Variables
 ################################################################################
 
 SCRIPT=`basename $0`
@@ -82,12 +82,12 @@ for file in .*; do
     continue
   fi
 
-  if [[ -f "${HOME}/${file}" && "${OVERRIDE_FILES}" = true ]]; then
-      mv -f "${HOME}/${file}" /tmp/
+  if [[ -e "${HOME}/${file}" && "${OVERRIDE_FILES}" = true ]]; then
+    mv -f "${HOME}/${file}" "/tmp/${file}-$(date '+%Y-%m-%d_%H:%M:%S')"
   fi
 
   if [[ -L "${HOME}/${file}" ]]; then
-    # Ignore if the file exists and is already a symlink 
+    # Ignore if the file exists and is already a symlink
     if [[ "${PWD}/${file}" = `readlink ${HOME}/${file}` ]]; then
       log "Symlink already exists for ${file}"
     else

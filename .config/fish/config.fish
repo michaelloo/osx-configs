@@ -1,11 +1,7 @@
 set PATH /usr/local/bin $PATH
 set PATH $HOME/.rbenv/shims $PATH
-set PATH $HOME/Library/Python/2.7/bin $PATH
-set -x PATH $HOME/.fastlane/bin $PATH
 rbenv rehash >/dev/null ^&1
 status --is-interactive; and source (rbenv init -|psub)
-
-thefuck --alias | source
 
 function fish_prompt --description 'Write out the prompt'
     # Just calculate these once, to save a few cycles when displaying the prompt

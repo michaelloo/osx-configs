@@ -3,7 +3,6 @@
 	excludesfile = /Users/michaelloo/.gitignore_global
 [user]
 	name = Michael Loo
-	email = michael.loo@outware.com.au
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -42,5 +41,5 @@
   tool = opendiff
 [credential]
   helper = osxkeychain
-[url "https://github.com/card-io/card.io-dmz"]
-  insteadOf = git@github.com:card-io/card.io-dmz
+[commit]
+	template = /Users/michaelloo/.stCommitMsg

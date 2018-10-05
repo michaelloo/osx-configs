@@ -62,6 +62,9 @@ done
 # Exit on any failure
 set -e
 
+# Create Vim backup folder
+mkdir -p ~/.vim/backup/
+
 # Loop through the files in this repository
 for file in .*; do
 

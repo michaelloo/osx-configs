@@ -182,3 +182,7 @@ export GIT_BRANCH=development
 export PATH=/usr/local/bin:$PATH
 export VAGRANT_DEFAULT_PROVIDER='vmware_fusion'
 export VAGRANT_CWD=$HOME/mavericks-multi/
+
+export ANDROID_HOME=~/Library/Android/sdk/tools/bin
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export PATH=~/.rbenv/shims:$PATH

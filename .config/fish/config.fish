@@ -1,4 +1,7 @@
 set PATH /usr/local/bin $PATH
+set PATH ~/Library/Python/3.7/bin $PATH
+set LC_ALL en_US.UTF-8
+set PATH $HOME/.rbenv/versions $PATH
 set PATH $HOME/.rbenv/shims $PATH
 rbenv rehash >/dev/null ^&1
 status --is-interactive; and source (rbenv init -|psub)
@@ -44,6 +47,20 @@ end
 
 function ow --description 'Open workspace in current folder'
    bash -c "[[ `ls *.xcworkspace 2>/dev/null` ]] && open *.xcworkspace -a /Applications/Xcode.app || open *.xcodeproj -a /Applications/Xcode.app"
+end
+
+function owe --description 'Open Example workspace for given module'
+   set workspace "modules/$argv/Example"
+   bash -c "[[ `ls $workspace/*.xcworkspace 2>/dev/null` ]] && open $workspace/*.xcworkspace -a /Applications/Xcode.app || open $workspace/*.xcodeproj -a /Applications/Xcode.app"
+end
+
+function pue --description 'Update pods for given module'
+   set workspace "modules/$argv/Example"
+   bash -c "cd $workspace; bundle exec pod install"
+end
+
+function sandbox --description 'Open Example workspace for given module'
+   bash -c "cd apps/sandbox; bundle exec pod install; open *.xcworkspace"
 end
 
 function of --description 'Open current folder'
@@ -139,7 +156,7 @@ function pwd_generate --description 'Generate a random password of 8 characters'
 end
 
 function bl --description 'Run bundle install local'
-  bundle install --local --path vendor/bundle
+  bundle install --local --path vendor
 end
 
 function be --description 'Run bundle exec'

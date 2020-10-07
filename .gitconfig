@@ -29,7 +29,7 @@
   cp = cherry-pick
   mt = mergetool
   pushup = push --set-upstream
-  bc = !sh -c \"git branch --merged | grep -Ev \\\"(develop|master)\\\" | xargs -I branch git b -d branch\"
+  bc = !sh -c \"git branch --merged | grep -Ev \\\"(develop|master|release)\\\" | xargs -I branch git b -d branch\"
   rbc = !sh -c \"git branch -r --merged | grep -Ev \\\"(develop|master|release)\\\" | sed \\\"s/origin\\///g\\\" | xargs -I branch git push -d origin branch\"
   bro = !sh -c \"${HOME}/Documents/dev/mac-osx-settings/bro.sh $1 $2\"
 	poush = push
@@ -41,5 +41,3 @@
   tool = opendiff
 [credential]
   helper = osxkeychain
-[commit]
-	template = /Users/michaelloo/.stCommitMsg

@@ -2,3 +2,4 @@
 .config/fish/fishd.*
 .vim/.netrwhist
 .vim/backup
+.config/github-copilot

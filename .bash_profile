@@ -186,3 +186,11 @@ export VAGRANT_CWD=$HOME/mavericks-multi/
 export ANDROID_HOME=~/Library/Android/sdk/tools/bin
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export PATH=~/.rbenv/shims:$PATH
+export PATH=/opt/homebrew/bin:/Users/michael.loo/.rbenv/shims:/opt/homebrew/bin:/Users/michael.loo/Library/Python/3.7/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+source "$HOME/.rea-cli/rea-shell-init.sh"
+
+export REDIS_CACHE_HOST="localhost"
+export REDIS_CACHE_PORT="6379"
+export JAVA_HOME="/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+

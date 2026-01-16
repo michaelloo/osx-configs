@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+LOCAL_HOOK=".git/hooks/pre-commit"
+if [[ -x "$LOCAL_HOOK" ]]; then
+  exec "$LOCAL_HOOK"
+fi

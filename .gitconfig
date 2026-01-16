@@ -1,8 +1,11 @@
 [core]
   quotepath = false
-	excludesfile = /Users/michaelloo/.gitignore_global
+	excludesfile = /Users/michael.loo/.gitignore_global
+	editor = /usr/bin/vim
+	hooksPath = /Users/michael.loo/.git-hooks
 [user]
 	name = Michael Loo
+	email = michael.loo@rea-group.com
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -19,6 +22,7 @@
   dc = diff --cached
   wd = diff --word-diff
   l = log --oneline
+  up = !git fetch --prune && git co master && git pull && git co -
   pushom = push origin master
   pullom = pull origin master
   su = submodule update --init
@@ -41,3 +45,10 @@
   tool = opendiff
 [credential]
   helper = osxkeychain
+[commit]
+	template = /Users/michael.loo/.gitmessage
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

@@ -1,11 +1,9 @@
 set PATH /usr/local/bin $PATH
 set PATH ~/Library/Python/3.7/bin $PATH
 set LC_ALL en_US.UTF-8
-#set PATH $HOME/.rbenv/versions $PATH
-#set PATH $HOME/.rbenv/shims $PATH
-#rbenv rehash >/dev/null ^&1
+set PATH /opt/homebrew/bin $PATH
 
-status --is-interactive; and source (rbenv init -|psub)
+status --is-interactive; and rbenv init - fish | source
 
 function fish_prompt
     # Just calculate these once, to save a few cycles when displaying the prompt
@@ -80,4 +78,8 @@ end
 
 function brake --description 'Run bundle exec rake'
   bundle exec rake $argv
+end
+
+function sub
+  open $argv -a 'Sublime Text'
 end

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -e
+
+COMMIT_MSG_FILE="$1"
+COMMIT_SOURCE="$2"
+
+# Fast exit for cases we don't care about
+case "$COMMIT_SOURCE" in
+  merge|squash|amend) exit 0 ;;
+esac
+
+# Fast check: is there already a real message?
+# If yes, skip everything (including branch lookup)
+if grep -q '^[^#[:space:]]' "$COMMIT_MSG_FILE"; then
+  exit 0
+fi
+
+# Read branch name from git internals (faster than git symbolic-ref)
+HEAD_FILE="$(git rev-parse --git-path HEAD 2>/dev/null)"
+BRANCH_NAME="$(sed -n 's#^ref: refs/heads/##p' "$HEAD_FILE")"
+
+# If detached HEAD or unexpected format
+[[ -z "$BRANCH_NAME" ]] && exit 0
+
+# Match <prefix>/<JIRA-KEY>-...
+if [[ "$BRANCH_NAME" =~ ^([^/]+)/([A-Z]+-[0-9]+)- ]]; then
+  PREFIX="${BASH_REMATCH[1]}"
+  JIRA_KEY="${BASH_REMATCH[2]}"
+
+  {
+    echo "${PREFIX}[${JIRA_KEY}]: "
+    cat "$COMMIT_MSG_FILE"
+  } > "${COMMIT_MSG_FILE}.tmp"
+
+  mv "${COMMIT_MSG_FILE}.tmp" "$COMMIT_MSG_FILE"
+fi

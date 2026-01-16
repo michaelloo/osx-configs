@@ -87,8 +87,13 @@ for file in .*; do
   fi
 
   if [[ -L "${HOME}/${file}" ]]; then
-    # Ignore if the file exists and is already a symlink
-    if [[ "${PWD}/${file}" = `readlink ${HOME}/${file}` ]]; then
+    if [[ "${OVERRIDE_FILES}" = true ]]; then
+      # Create a symlink for the remaining files
+      log "Overriding symlink for ${file}"
+      mv "${HOME}/${file}" ~/.Trash/
+      ln -s "${PWD}/${file}" "${HOME}/${file}"
+    elif [[ "${PWD}/${file}" = `readlink ${HOME}/${file}` ]]; then
+      # Ignore if the file exists and is already a symlink
       log "Symlink already exists for ${file}"
     else
       log "Symlink already exists but have a different link."
